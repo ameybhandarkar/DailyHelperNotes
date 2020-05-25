@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.dailyhelper.BaseFragment
 import com.example.dailyhelper.R
+import com.example.dailyhelper.database.ToDoDatabase
 import com.example.dailyhelper.databinding.TodolistFragmentBinding
 
 
@@ -27,17 +28,30 @@ class ToDoListFragment : BaseFragment() {
             inflater,
             R.layout.todolist_fragment, container, false
         )
-        return binding.root
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val viewModelFactory = (ToDoViewModelFactory())
+        val application = requireNotNull(this.activity).application
+        val dataSource = ToDoDatabase.getInstance(application).todoDao
+
+        val viewModelFactory = (ToDoViewModelFactory(dataSource,application))
         viewModel = ViewModelProvider(
             viewModelStore,
             viewModelFactory
         )
             .get(ToDoListViewModel::class.java)
+
+
+        binding.todoViewModel =  viewModel
+        val adapter = ToDoDtlAdapter()
+        binding.rvList.adapter = adapter
+
+        binding.lifecycleOwner = this
+
+        return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
     }
 
 }

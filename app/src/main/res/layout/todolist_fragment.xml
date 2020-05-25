@@ -3,15 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="todoViewModel"
+            type="com.example.dailyhelper.screens.dtl.ToDoListViewModel" />
     </data>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screens.dtl.ToDoListFragment">
+        android:fillViewport="false"
+        android:background="@color/mustard_yellow">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".screens.dtl.ToDoListFragment"
+            android:padding="@dimen/global_padding">
 
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:lines="1"
+                android:textSize="@dimen/header_text_size"
+                android:layout_alignParentTop="true"
+                />
 
-    </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/et_title"
+                android:layout_marginTop="10dp"/>
+
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/rl_container"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_below="@id/et_title"></RelativeLayout>-->
+
+        </RelativeLayout>
+    </ScrollView>
 </layout>

@@ -44,5 +44,7 @@ dependencies {
     implementation "com.google.android.material:material:$supportlibVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$extention_version"
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
 }
