@@ -4,7 +4,7 @@
     <data>
         <variable
             name="todoModel"
-            type="com.example.dailyhelper.database.ToDoDtlModel" />
+            type="com.example.dailyhelper.database.ToDoDtlTable" />
     </data>
 
     <RelativeLayout

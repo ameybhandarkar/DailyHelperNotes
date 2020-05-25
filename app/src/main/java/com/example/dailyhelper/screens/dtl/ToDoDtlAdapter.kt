@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dailyhelper.database.ToDoDtlModel
+import com.example.dailyhelper.database.ToDoDtlTable
 import com.example.dailyhelper.databinding.ItemWithCheckBoxBinding
 
-class ToDoDtlAdapter: ListAdapter<ToDoDtlModel, ToDoDtlAdapter.ViewHolder>(ToDoDtlDiffCallback()) {
+class ToDoDtlAdapter: ListAdapter<ToDoDtlTable, ToDoDtlAdapter.ViewHolder>(ToDoDtlDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -21,7 +21,7 @@ class ToDoDtlAdapter: ListAdapter<ToDoDtlModel, ToDoDtlAdapter.ViewHolder>(ToDoD
 
     class ViewHolder private constructor(val binding: ItemWithCheckBoxBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: ToDoDtlModel) {
+        fun bind(item: ToDoDtlTable) {
             binding.todoModel = item
             binding.executePendingBindings()
         }
@@ -37,14 +37,14 @@ class ToDoDtlAdapter: ListAdapter<ToDoDtlModel, ToDoDtlAdapter.ViewHolder>(ToDoD
 }
 
 
-class ToDoDtlDiffCallback : DiffUtil.ItemCallback<ToDoDtlModel>() {
+class ToDoDtlDiffCallback : DiffUtil.ItemCallback<ToDoDtlTable>() {
 
-    override fun areItemsTheSame(oldItem: ToDoDtlModel, newItem: ToDoDtlModel): Boolean {
-        return oldItem.todoId == newItem.todoId
+    override fun areItemsTheSame(oldItem: ToDoDtlTable, newItem: ToDoDtlTable): Boolean {
+        return oldItem.todoChildId == newItem.todoChildId
     }
 
 
-    override fun areContentsTheSame(oldItem: ToDoDtlModel, newItem: ToDoDtlModel): Boolean {
+    override fun areContentsTheSame(oldItem: ToDoDtlTable, newItem: ToDoDtlTable): Boolean {
         return oldItem == newItem
     }
 
