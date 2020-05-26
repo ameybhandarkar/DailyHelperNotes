@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.dailyhelper.BaseFragment
 import com.example.dailyhelper.R
 import com.example.dailyhelper.database.ToDoDatabase
+import com.example.dailyhelper.database.ToDoDtlTable
 import com.example.dailyhelper.databinding.TodolistFragmentBinding
 
 
@@ -45,6 +47,19 @@ class ToDoListFragment : BaseFragment() {
         binding.rvList.adapter = adapter
 
         binding.lifecycleOwner = this
+
+        viewModel.todoDtlList.observe(viewLifecycleOwner, Observer {
+            it?.let {
+
+                if(it.isNotEmpty()){
+                    adapter.data = it
+                }else{
+                    val emptyTodoObj = ToDoDtlTable()
+                    it.add(emptyTodoObj)
+                    adapter.data = it
+                }
+            }
+        })
 
         return binding.root
     }
