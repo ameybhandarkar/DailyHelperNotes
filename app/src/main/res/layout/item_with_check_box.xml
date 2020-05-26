@@ -24,6 +24,6 @@
             android:layout_toRightOf="@id/checkbox"
             android:layout_centerVertical="true"
             android:singleLine="true"
-            android:text="@{todoModel.todoDesc}"/>
+            android:text="@{todoModel.todoDescription}"/>
     </RelativeLayout>
 </layout>

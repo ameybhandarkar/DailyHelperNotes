@@ -7,5 +7,5 @@ import androidx.room.Query
 interface TodoDao {
 
     @Query("SELECT * from tododtltable WHERE toDoParentId = :key")
-    fun getTodoDetail(key: Long): TodoDao
+    fun getTodoDetail(key: Long): ToDoDtlTable
 }

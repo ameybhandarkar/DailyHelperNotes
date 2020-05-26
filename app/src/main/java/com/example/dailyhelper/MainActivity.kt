@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.dailyhelper.databinding.ActivityMainBinding
 
@@ -27,9 +28,6 @@ class MainActivity : BaseActivity() {
 
         NavigationUI.setupWithNavController(binding.navView, navController)
 
-        binding.floatingActionButton.setOnClickListener { view ->
-
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
